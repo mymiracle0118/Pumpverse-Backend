@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/layouts/header/Navbar";
 import cross from "../../assets/images/auth/cross.svg"
+import { BiShow } from "react-icons/bi";
+import { BiHide } from "react-icons/bi";
 
 export default function Singin() {
 //   const navigate = useNavigate();
@@ -100,7 +102,7 @@ export default function Singin() {
                 onClick={() => setShowPassword(!showPassword)} // Toggle showPassword state
                 className="absolute inset-y-0 right-0 flex items-center justify-center mr-2 text-gray-400"
               >
-                {showPassword ? "Hide Password" : "Show Password" }
+                {showPassword ? <BiHide /> : <BiShow /> }
               </button>
             </div>
             {errors.password && (

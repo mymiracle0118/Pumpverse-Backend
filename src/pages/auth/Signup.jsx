@@ -1,7 +1,10 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/layouts/header/Navbar";
 import cross from "../../assets/images/auth/cross.svg";
+import { BiShow } from "react-icons/bi";
+import { BiHide } from "react-icons/bi";
+
 export default function Singup() {
   const [email, setEmail] = useState("");
   const [firstname, setFirstName] = useState("");
@@ -12,9 +15,6 @@ export default function Singup() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [errors, setErrors] = useState({});
-
-  const newPasswordRef = useRef(null);
-  const confirmPasswordRef = useRef(null);
 
   //   const { signup } = useSignup();
 
@@ -128,7 +128,6 @@ export default function Singup() {
               )}
               <div className="relative">
                 <input
-                  ref={newPasswordRef}
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="Password"
@@ -137,25 +136,21 @@ export default function Singup() {
                   }`}
                   type={showNewPassword ? "text" : "password"}
                 />
-                {errors.newPassword && (
-                  <p className="text-red-500 text-xs pl-3">
-                    {errors.newPassword}
-                  </p>
-                )}
                 <button
                   type="button"
-                  onClick={() => {
-                    setShowNewPassword(!showNewPassword);
-                    newPasswordRef.current.focus(); // Focus the new password input after toggling visibility
-                  }}
+                  onClick={() => setShowNewPassword(!showNewPassword)}
                   className="absolute inset-y-0 right-0 flex items-center justify-center mr-2 text-gray-400"
                 >
-                  {showNewPassword ? "Hide Password" : "Show Password"}
+                  {showNewPassword ? <BiHide /> : <BiShow />}
                 </button>
               </div>
+              {errors.newPassword && (
+                <p className="text-red-500 text-xs pl-3">
+                  {errors.newPassword}
+                </p>
+              )}
               <div className="relative">
                 <input
-                  ref={confirmPasswordRef}
                   type={showConfirmPassword ? "text" : "password"}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -166,13 +161,10 @@ export default function Singup() {
                 />
                 <button
                   type="button"
-                  onClick={() => {
-                    setShowConfirmPassword(!showConfirmPassword);
-                    confirmPasswordRef.current.focus(); // Focus the confirm password input after toggling visibility
-                  }}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   className="absolute inset-y-0 right-0 flex items-center justify-center mr-2 text-gray-400"
                 >
-                  {showConfirmPassword ? "Hide Password" : "Show Password"}
+                  {showConfirmPassword ? <BiHide /> : <BiShow />}
                 </button>
               </div>
               {errors.confirmPassword && (
