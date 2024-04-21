@@ -1,19 +1,20 @@
+// SelectForm.js
 import React from "react";
 
-export default function SelectForm({ options, value, onChange }) {
+export default function SelectForm({ options, value, onChange, selectClassName, wrapperClassName }) {
   const handleChange = (e) => {
     onChange(e.target.value);
   };
 
   return (
-    <div className="relative">
+    <div className={`relative ${wrapperClassName}`}>
       <select
         value={value}
         onChange={handleChange}
-        className="appearance-none bg-[#333333] rounded-[10px] py-[10px] px-[22px] w-full md:w-[233px] border-0 outline-none text-[#919191]"
+        className={`appearance-none ${selectClassName} bg-[#333333] rounded-[10px] py-[10px] px-[22px] w-full lg:w-[150px] 2xl:w-[233px] border-0 outline-none text-[#919191]`}
       >
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
+          <option key={option.value} value={option.value} className="">
             {option.label}
           </option>
         ))}
@@ -26,12 +27,7 @@ export default function SelectForm({ options, value, onChange }) {
           fill="none"
           stroke="currentColor"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M6 9l4 4 4-4"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 9l4 4 4-4" />
         </svg>
       </div>
     </div>

@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "../pages/Home";
 import Singin from "../pages/auth/Signin";
 import Singup from "../pages/auth/Signup";
 import Main from "../pages/main";
-
+import Leaderboard from "../pages/Leaderboard";
 
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
@@ -31,10 +30,10 @@ export const AppRouter = () => {
         <WalletModalProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Home />} />
               <Route path="/signin" element={<Singin />} />
               <Route path="/signup" element={<Singup />} />
-              <Route path="/main" element={<Main />} />
+              <Route path="/" element={<Main />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
             </Routes>
           </BrowserRouter>
         </WalletModalProvider>

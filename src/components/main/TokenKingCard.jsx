@@ -3,34 +3,36 @@ import { Link } from "react-router-dom";
 
 import ProgressBar from "@ramonak/react-progress-bar";
 import token1 from "../../assets/images/common/token1.png";
-import Success1 from "../../assets/images/common/progress1done.png";
-import Success2 from "../../assets/images/common/progress2.png";
+import { FaUserCircle } from "react-icons/fa";
+import { BsFillLightningChargeFill } from "react-icons/bs";
 
 export default function TokenKingCard() {
   return (
-    <div className="border-2 border-[#9945FF] bg-gradient-to-t from-[#9945FF] to-[#000000] rounded-[16px] px-2 2xl:px-4 py-1 2xl:py-2 flex gap-4 m-auto w-full md:w-[593px]">
-      <img src={token1} className="" alt="" />
-      <div>
-        <div className="flex justify-between items-center">
-          <div>
-            <h2 className="text-white text-[27px]">$LERF</h2>
-          </div>
-          <Link className="text-[#9945FF] text-[11px] 2xl:text-[12px]">
-            by <u>uKnowMe</u>
+    <div className="border border-[#9945FF] rounded-[20px] p-3 ss:p-5 flex items-center gap-4 m-auto w-full md:w-[479px] relative">
+      <img src={token1} className="w-[80px] xs:w-[90px] md:w-[114px] h-[80px] xs:h-[90px] md:h-[114px]" alt="" />
+      <div className="w-full text-white flex flex-col justify-between">
+        <h2 className="text-[20px] md:text-[25px]">$LOWANA</h2>
+        <div className="flex justify-start items-center gap-[8px] pt-1 md:pt-0">
+          <p className="text-[12px] xs:text-[15px] pr-2">Created by</p>
+          <FaUserCircle size={23} />
+          <Link className="text-[12px] xs:text-[14px]">
+            <u>uKnowMe</u>
           </Link>
         </div>
-        <p className="text-white text-[15px] pt-[10px]">Merged with a vision to be a fun and engaging meme coin, brimming with exciting content to propel its journey forward.</p>
-        <div className="relative pt-[35px] 2xl:pt-[35px]">
+        <div className="pt-3">
+        <p className="text-white pb-1">Market cap: {((40 / 100) * 59).toFixed(2)} K</p>
           <ProgressBar
-            completed="90"
-            height="16px"
-            bgColor="linear-gradient(to right, #9945FF, #14F195)"
-            className="border border-white rounded-[50px]"
-            baseBgColor="transparent"
+            completed="40"
+            height="8px"
+            bgColor="#9945FF"
+            className="rounded-[50px]"
+            baseBgColor="#333333"
+            labelSize="0px"
           />
-          <img src={Success1} alt="" className="absolute top-0 right-[20%] w-[20px] 2xl:w-[25px]" />
-          <img src={Success2} alt="" className="absolute top-1 right-0 w-[15px] 2xl:w-[20px]" />
         </div>
+      </div>
+      <div className="absolute top-0 right-0 text-[#9945FF] p-2 md:p-4 border border-l-[#9945FF] border-b-[#9945FF] border-transparent rounded-bl-[20px]">
+      <BsFillLightningChargeFill size={25}/>
       </div>
     </div>
   );
