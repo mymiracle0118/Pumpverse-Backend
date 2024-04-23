@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import TokenList from "../components/main/TokenList";
 import Leaderboard from "./Leaderboard";
+import CreateToken from "./CreateToken";
+
 import MainNavbar from "../components/layouts/header/MainNavbar";
 import Sidebar from "../components/layouts/sidebar/Sidebar";
 import token1 from "../assets/images/common/token1.png";
@@ -214,7 +216,9 @@ export default function Main() {
             selectedOption3={selectedOption3}
             handleSelectChange={handleSelectChange}
           />
-          // Render your leaderboard component here
+        )}
+        {activePage === "createtoken" && (
+          <CreateToken />
         )}
       </div>
     </div>

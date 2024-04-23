@@ -4,6 +4,7 @@ import Singin from "../pages/auth/Signin";
 import Singup from "../pages/auth/Signup";
 import Main from "../pages/main";
 import Leaderboard from "../pages/Leaderboard";
+import CreateToken from "../pages/CreateToken";
 
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
@@ -34,6 +35,7 @@ export const AppRouter = () => {
               <Route path="/signup" element={<Singup />} />
               <Route path="/" element={<Main />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/createtoken" element={<CreateToken />} />
             </Routes>
           </BrowserRouter>
         </WalletModalProvider>

@@ -126,6 +126,7 @@ export default function Sidebar({ onToggle, onPageChange }) {
             </li>
             <li>
               <button
+                onClick={() => handleClick("createtoken")}
                 className={`flex gap-9 py-[13px] text-[16px] mb-6 ${
                   isCollapsed ? "pl-[18px]" : "pl-12"
                 } ${
@@ -213,7 +214,10 @@ export default function Sidebar({ onToggle, onPageChange }) {
               <GiTrophyCup size={20} />
               Leaderboard
             </button>
-            <button className="flex justify-center gap-4 text-[10px] xs:text-[16px] w-1/2 bg-black rounded-[6px] p-1 border border-transparent hover:border-[#9945FF]">
+            <button
+              onClick={() => handleClick("createtoken")}
+              className="flex justify-center gap-4 text-[10px] xs:text-[16px] w-1/2 bg-black rounded-[6px] p-1 border border-transparent hover:border-[#9945FF]"
+            >
               <HiOutlineSquaresPlus size={20} />
               Create token
             </button>

@@ -19,9 +19,9 @@ code {
 }
 
 .common-input {
-  background-color: #161616;
+  background-color: #333333;
   border: none;
-  border-radius: 9999px;
+  border-radius: 15px;
   height: 48px;
   font-size: 14px;
   color: #c5c5c5;
