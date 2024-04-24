@@ -29,7 +29,7 @@ const coinSchema = new mongoose.Schema({
         type: String,
         maxlength: 1000,
     },
-    avatar: {
+    image: {
         type: String,
         required: true,
     },
@@ -38,10 +38,10 @@ const coinSchema = new mongoose.Schema({
         required: true,
         default: 0,
     },
-    created_at: {
-        type: Date,
+    timestamp: {
+        type: Number,
         required: true
-    }
+    },
 });
 
 module.exports = mongoose.model('coins', coinSchema);
