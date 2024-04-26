@@ -6,6 +6,9 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaGlobe } from "react-icons/fa";
 import { CiImageOn } from "react-icons/ci";
 
+import { createMint } from '@solana/spl-token';
+import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from '@solana/web3.js';
+
 const CreateToken = () => {
   const [tokenName, settokenName] = useState("");
   const [symbol, setsymbol] = useState("");
@@ -20,6 +23,28 @@ const CreateToken = () => {
     const file = e.target.files[0];
     setFile(file);
   };
+
+  const handleCreateToken = (e) => {
+    const payer = Keypair.generate();
+    const mintAuthority = Keypair.generate();
+    const freezeAuthority = Keypair.generate();
+
+    const connection = new Connection(
+      clusterApiUrl('devnet'),
+      'confirmed'
+    );
+
+    const mint = createMint(
+      connection,
+      payer,
+      mintAuthority.publicKey,
+      freezeAuthority.publicKey,
+      9 // We are using 9 to match the CLI decimal default exactly
+    );
+
+    console.log(mint);
+    // console.log("New Token Address: " + mint.toBase58());
+  }
 
   return (
     <>
@@ -207,7 +232,10 @@ const CreateToken = () => {
         </div>
       </div>
       <div className="text-white flex flex-col items-center pt-[48px]">
-        <button className="text-[20px] bg-[#9945FF] rounded-[15px] py-1 px-7 text-white flex justify-center">
+        <button
+          className="text-[20px] bg-[#9945FF] rounded-[15px] py-1 px-7 text-white flex justify-center"
+          onClick={handleCreateToken}
+        >
           Create token
         </button>
         <p className="text-[14px] pt-[15px]">Cost to deploy: 0.025 SOL</p>
