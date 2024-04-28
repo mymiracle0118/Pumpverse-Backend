@@ -4,6 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
+const routes = require('./routes');
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+
+app.use('/', routes);
 
 require('./models/db');
 
