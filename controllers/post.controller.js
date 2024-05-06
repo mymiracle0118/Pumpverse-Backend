@@ -1,23 +1,27 @@
-const Post = require("../models/post")
+const Post = require("../models/post");
 
 /* GET request handler */
 const getPost = async (req, res) => {
-    const posts = await Post.find()
+    const coin_id = req.params.id;
+    const posts = await Person.find({
+            coin_id: coin_id
+        })
+        .limit(10)
+        .sort({ createdAt: -1 })
+        .exec();
+
     res.json(posts)
 }
 
 /* POST Request handler */
 const addPost = async (req, res) => {
-    const highlights = req.body.highlights.split(",")
-    const size = req.body.size.split(",")
 
     /* The request.body must have all these values */
     const post = {
-        coin: req.body.coin,
+        coin_id: req.params.id,
         user: req.body.user,
         content: req.body.content,
         image: req.body.image,
-        timestamp: Date.now(),
     }
 
     if (post){

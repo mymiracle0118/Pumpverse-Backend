@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const tradeSchema = new mongoose.Schema({
+    coin_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        refer: "Coin"
+    },
     signature: {
         type: String,
         required: true,
@@ -30,6 +34,8 @@ const tradeSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('trades', tradeSchema);

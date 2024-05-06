@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 
 const coinSchema = new mongoose.Schema({
+    address: {
+        type: String,
+        required: true,
+    },
+    creator: {
+        type: String,
+        required: true,
+    },
     name: {
         type: String,
         required: true,
@@ -38,10 +46,13 @@ const coinSchema = new mongoose.Schema({
         required: true,
         default: 0,
     },
-    timestamp: {
+    decimals: {
         type: Number,
-        required: true
-    },
+        required: true,
+        default: 9,
+    }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('coins', coinSchema);

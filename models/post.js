@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
-    coin: {
+    coin_id: {
         type: mongoose.Schema.Types.ObjectId,
         refer: "Coin"
     },
@@ -16,10 +16,8 @@ const postSchema = new mongoose.Schema({
     image: {
         type: String,
     },
-    timestamp: {
-        type: Number,
-        required: true
-    },
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('posts', postSchema);
